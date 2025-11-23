@@ -320,6 +320,10 @@ button:active {
   border-color: var(--silver);
 }
 
+#clear-tasks {
+  margin-top: 12px;
+}
+
 /* Timer */
 .timer-display {
   font-size: 48px;

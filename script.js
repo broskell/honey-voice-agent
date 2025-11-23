@@ -12,6 +12,7 @@ const sendBtn = document.getElementById("send-text");
 const taskListEl = document.getElementById("task-list");
 const taskInput = document.getElementById("task-input");
 const addTaskBtn = document.getElementById("add-task");
+const clearTasksBtn = document.getElementById("clear-tasks");
 
 const timerDisplay = document.getElementById("timer-display");
 const startTimerBtn = document.getElementById("start-timer");
@@ -96,20 +97,15 @@ function stopRecognition() {
 function chooseDefaultVoice() {
   if (!allVoices.length) return null;
 
-  // Try: Indian English + explicitly female
   let v =
     allVoices.find(
       (v) => v.lang === "en-IN" && v.name.toLowerCase().includes("female"),
     ) ||
-    // Indian English
     allVoices.find((v) => v.lang === "en-IN") ||
-    // Name suggesting India
     allVoices.find((v) => v.name.toLowerCase().includes("india")) ||
-    // Common female voices on Windows
     allVoices.find((v) =>
       /zira|heera|meera|neerja|sara|sonia/.test(v.name.toLowerCase()),
     ) ||
-    // Fallback: first voice
     allVoices[0];
 
   return v || null;
@@ -138,7 +134,6 @@ function populateVoiceList() {
     voiceSelect.appendChild(opt);
   });
 
-  // Choose default Honey voice
   const preferred = chooseDefaultVoice();
   if (preferred) {
     honeyVoice = preferred;
@@ -151,7 +146,6 @@ function populateVoiceList() {
 
 if ("speechSynthesis" in window) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
-  // Sometimes voices are already loaded
   setTimeout(populateVoiceList, 200);
 }
 
@@ -166,7 +160,6 @@ function speakText(text) {
   if (!window.speechSynthesis) return;
   const utterance = new SpeechSynthesisUtterance(text);
   if (honeyVoice) utterance.voice = honeyVoice;
-  // Slightly higher pitch to sound more feminine
   utterance.rate = 1.0;
   utterance.pitch = 1.25;
 
@@ -207,6 +200,12 @@ function toggleTask(i) {
   renderTasks();
 }
 
+function clearAllTasks() {
+  tasks = [];
+  saveTasks();
+  renderTasks();
+}
+
 function tryHandleTaskCommand(text) {
   const lower = text.toLowerCase();
 
@@ -235,6 +234,25 @@ function tryHandleTaskCommand(text) {
       .map((t, i) => `${i + 1}. ${t.text}${t.done ? " (done)" : ""}`)
       .join("\n");
     const reply = "Here are your tasks:\n" + list;
+    appendMessage("honey", reply);
+    speakText(reply);
+    return true;
+  }
+
+  if (
+    lower.includes("clear tasks") ||
+    lower.includes("delete all tasks") ||
+    lower.includes("clear my tasks")
+  ) {
+    if (!tasks.length) {
+      const reply = "You don't have any tasks to clear, overachiever.";
+      appendMessage("honey", reply);
+      speakText(reply);
+      return true;
+    }
+    clearAllTasks();
+    const reply =
+      "All tasks cleared. Now don't use that as an excuse to be lazy, okay?";
     appendMessage("honey", reply);
     speakText(reply);
     return true;
@@ -314,6 +332,15 @@ async function sendToHoney(text) {
     });
 
     const data = await resp.json();
+
+    if (data.error) {
+      const reply = `My brain server failed: ${data.error}.`;
+      appendMessage("honey", reply);
+      speakText(reply);
+      console.error("Honey backend error:", data);
+      return;
+    }
+
     const reply = data.reply || "Hmm, I'm not sure what happened there.";
 
     conversation.push({ role: "assistant", content: reply });
@@ -378,6 +405,13 @@ addTaskBtn.onclick = () => {
   taskInput.value = "";
 };
 
+clearTasksBtn.onclick = () => {
+  clearAllTasks();
+  const reply = "Cleared all your tasks. Fresh slate, yaar.";
+  appendMessage("honey", reply);
+  speakText(reply);
+};
+
 startTimerBtn.onclick = () => startFocusTimer(25);
 stopTimerBtn.onclick = () => stopTimer();
 
@@ -391,7 +425,6 @@ askPlanBtn.onclick = () => {
 window.addEventListener("load", () => {
   initSTT();
   if ("speechSynthesis" in window) {
-    // Try populate immediately; onvoiceschanged will also fire
     setTimeout(populateVoiceList, 200);
   }
   renderTasks();

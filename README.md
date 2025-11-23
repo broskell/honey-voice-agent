@@ -1,6 +1,6 @@
 # Honey – AI Voice Study Buddy (Browser Voice + LLM)
 
-![Honey App Screenshot](screenshot.png)
+![Honey App Screenshot](/Assets/preview.png)
 
 Honey is a small web app that acts as a voice-first AI "study buddy" for students.
 
@@ -62,6 +62,9 @@ She helps you manage tasks, run focus timers, and generate study plans, while al
 
 ```
 .
+├── Assets/            # Contains preview
+├  ├── preview.png
+├
 ├── index.js           # Node.js server (Express + Groq API call)
 ├── package.json       # Dependencies
 ├── index.html         # UI layout
@@ -93,10 +96,6 @@ npm install
 2. Go to **API Keys** → **Create API Key**.
 3. Copy your key (starts with `gsk_...`).
 4. Open `index.js` and set your key:
-
-```javascript
-const GROQ_API_KEY = "YOUR_GROQ_API_KEY_HERE";
-```
 
 **Important:** Never commit your real key to a public repo. Keep `"YOUR_GROQ_API_KEY_HERE"` in Git, and only put the real key in your local copy or use environment variables.
 
@@ -145,7 +144,7 @@ http://localhost:3000
 ## Screenshots
 
 ### Main Interface
-![Main Interface](screenshot.png)
+![Main Interface](/Assets/preview.png)
 
 The app features:
 - **Left panel:** Chat interface with voice controls
