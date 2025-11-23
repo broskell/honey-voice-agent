@@ -1,10 +1,10 @@
-# Junnu – AI Voice Study Buddy (Browser Voice + LLM)
+# Honey – AI Voice Study Buddy (Browser Voice + LLM)
 
-![Junnu App Screenshot](screenshot.png)
+![Honey App Screenshot](screenshot.png)
 
-Junnu is a small web app that acts as a voice-first AI "study buddy" for students.
+Honey is a small web app that acts as a voice-first AI "study buddy" for students.
 
-You can talk to Junnu in your browser, and she replies out loud in English (Indian style).  
+You can talk to Honey in your browser, and she replies out loud in English (Indian style).  
 She helps you manage tasks, run focus timers, and generate study plans, while also chatting like a slightly sassy but supportive friend.
 
 ---
@@ -12,7 +12,7 @@ She helps you manage tasks, run focus timers, and generate study plans, while al
 ## Features
 
 - **Voice Conversation**
-  - Talk to Junnu using your microphone (Web Speech API).
+  - Talk to Honey using your microphone (Web Speech API).
   - She replies with speech (browser `speechSynthesis`) + chat bubbles.
 
 - **Tasks / To‑Do List**
@@ -27,14 +27,14 @@ She helps you manage tasks, run focus timers, and generate study plans, while al
   - Can also start/stop by voice:
     - `Start timer`
     - `Stop timer`
-  - Junnu announces when focus starts and when time is up.
+  - Honey announces when focus starts and when time is up.
 
 - **Study Plan Generation**
-  - Junnu can create day‑by‑day study plans for upcoming exams using an LLM.
+  - Honey can create day‑by‑day study plans for upcoming exams using an LLM.
   - You tell her your exam, timeframe, and available hours; she returns a concrete plan.
 
 - **Personality**
-  - Female Indian assistant called **Junnu**.
+  - Female Indian assistant called **Honey**.
   - Friendly, playful, a bit flirty and teasing, but safe and supportive.
   - Speaks casual Indian English ("yaar", "arre", etc.).
 
@@ -77,8 +77,8 @@ She helps you manage tasks, run focus timers, and generate study plans, while al
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-username>/junnu-voice-buddy.git
-cd junnu-voice-buddy
+git clone https://github.com/broskell/honey-voice-buddy.git
+cd honey-voice-buddy
 ```
 
 ### 2. Install dependencies
@@ -119,14 +119,14 @@ http://localhost:3000
 ```
 
 - Allow microphone permission when asked.
-- Try talking to Junnu or typing in the chat box.
+- Try talking to Honey or typing in the chat box.
 
 ---
 
 ## Example Things to Say
 
 - **Conversation:**
-  - `Junnu, how are you today?`
+  - `Honey, how are you today?`
   - `Roast me for procrastinating, but motivate me after that.`
 
 - **Tasks:**
@@ -138,7 +138,7 @@ http://localhost:3000
   - `Stop timer`
 
 - **Study plan:**
-  - `Junnu, I have a physics exam in 7 days, make a study plan.`
+  - `Honey, I have a physics exam in 7 days, make a study plan.`
 
 ---
 
@@ -198,4 +198,4 @@ If you encounter any issues or have questions, please open an issue on GitHub.
 
 ---
 
-**Built with ❤️ for students who need a study buddy**
+**Built with ❤️ by Kellampalli Saathvik (@broskell) for students who need a study buddy**
