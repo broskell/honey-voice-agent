@@ -1,11 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const fetch = require("node-fetch");
+const path = require("path");
 
 const app = express();
 
 // ===== GROQ KEY FROM ENV =====
-// Do NOT put your key here in the code.
 // On Render you will set an environment variable named GROQ_API_KEY.
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
@@ -13,8 +13,14 @@ const GROQ_API_KEY = process.env.GROQ_API_KEY;
 app.use(cors());
 app.use(express.json());
 
-// Serve static frontend from "public" folder
-app.use(express.static("public"));
+// Serve static frontend from "public" folder (absolute path)
+const publicPath = path.join(__dirname, "public");
+app.use(express.static(publicPath));
+
+// Explicit route for "/"
+app.get("/", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"));
+});
 
 const SYSTEM_PROMPT = `
 You are Honey, a female Indian virtual assistant for students.
