@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Honey - Your AI Study Buddy</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div>
+          <h1>Honey</h1>
+          <p class="subtitle">Your slightly savage study buddy</p>
+        </div>
+
+        <div class="voice-settings">
+          <label for="voice-select">Voice</label>
+          <select id="voice-select">
+            <option>Loading voices…</option>
+          </select>
+        </div>
+      </header>
+
+      <main>
+        <section class="chat-section">
+          <div id="chat" class="chat"></div>
+
+          <div class="controls">
+            <button id="start-voice">🎙️ Start Talking</button>
+            <button id="stop-voice">⏹️ Stop</button>
+            <button id="reset-chat">🧹 Reset Chat</button>
+          </div>
+
+          <div class="text-input">
+            <input id="text-input" placeholder="Type to Honey..." />
+            <button id="send-text">Send</button>
+          </div>
+
+          <div id="speaking-indicator" class="speaking-indicator">
+            Honey is speaking…
+          </div>
+        </section>
+
+        <section class="side-panel">
+          <div class="panel-block">
+            <h2>Tasks</h2>
+            <ul id="task-list"></ul>
+            <div class="task-input-row">
+              <input id="task-input" placeholder="New task..." />
+              <button id="add-task">Add</button>
+            </div>
+            <p class="hint">
+              Voice: “Add task &lt;something&gt;”, “Show my tasks”
+            </p>
+          </div>
+
+          <div class="panel-block">
+            <h2>Study Timer</h2>
+            <div id="timer-display" class="timer-display">25:00</div>
+            <div class="timer-buttons">
+              <button id="start-timer">Start 25‑min Focus</button>
+              <button id="stop-timer">Stop</button>
+            </div>
+            <p class="hint">Voice: “Start timer”, “Stop timer”</p>
+          </div>
+
+          <div class="panel-block">
+            <h2>Study Plan</h2>
+            <textarea
+              id="plan-output"
+              rows="6"
+              placeholder="Your study plan will appear here..."
+            ></textarea>
+            <button id="ask-plan">Ask Honey for a study plan</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
