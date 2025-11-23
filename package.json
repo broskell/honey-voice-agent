@@ -1,0 +1,17 @@
+{
+  "name": "honey-voice-assistant",
+  "version": "1.0.0",
+  "description": "Honey - AI voice study buddy",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "node-fetch": "^2.7.0"
+  }
+}
