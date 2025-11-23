@@ -55,6 +55,9 @@ Behavior:
 app.post("/api/chat", async (req, res) => {
   const apiKey = GROQ_API_KEY;
 
+  // Log whether the key is seen (true/false) – does NOT print the key
+  console.log("GROQ_API_KEY present?", !!apiKey);
+
   if (!apiKey) {
     return res
       .status(500)
