@@ -4,11 +4,10 @@ const fetch = require("node-fetch");
 
 const app = express();
 
-// ====== PUT YOUR GROQ KEY HERE ======
-// Replace ONLY YOUR_GROQ_API_KEY_HERE with your real key, keep the quotes.
-const GROQ_API_KEY = "YOUR_GROQ_API_KEY_HERE";
-// Example:
-// const GROQ_API_KEY = "gsk_abc123...";
+// ===== GROQ KEY FROM ENV =====
+// Do NOT put your key here in the code.
+// On Render you will set an environment variable named GROQ_API_KEY.
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
 // Middlewares
 app.use(cors());
@@ -53,7 +52,7 @@ app.post("/api/chat", async (req, res) => {
   if (!apiKey) {
     return res
       .status(500)
-      .json({ error: "GROQ_API_KEY is not set in index.js." });
+      .json({ error: "GROQ_API_KEY is not set on the server." });
   }
 
   const messages = req.body?.messages || [];
@@ -68,12 +67,11 @@ app.post("/api/chat", async (req, res) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          // Supported Groq model
           model: "llama-3.1-8b-instant",
           messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
           temperature: 0.7,
         }),
-      },
+      }
     );
 
     if (!response.ok) {
@@ -86,7 +84,8 @@ app.post("/api/chat", async (req, res) => {
 
     const data = await response.json();
     const reply =
-      data.choices?.[0]?.message?.content || "Sorry, I got confused there.";
+      data.choices?.[0]?.message?.content ||
+      "Sorry, I got confused there.";
 
     res.json({ reply });
   } catch (err) {
@@ -95,7 +94,7 @@ app.post("/api/chat", async (req, res) => {
   }
 });
 
-// Start server on Replit's port or local 3000
+// Start server on Render's port or local 3000
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log("Honey server running on port", port);
