@@ -1,6 +1,8 @@
 # Honey – AI Voice Study Buddy (Browser Voice + LLM)
 
-![Honey App Screenshot](/Assets/honey_logo.png)
+<div align="center">
+  <img src="/Assets/honey_logo.png" alt="Honey Logo" width="200"/>
+</div>
 
 Honey is a small web app that acts as a voice‑first AI "study buddy" for students.
 
@@ -72,6 +74,7 @@ She helps you manage tasks, run focus timers, and generate study plans, while al
 ```text
 .
 ├── Assets/
+│   ├── honey_logo.png     # Honey logo for README
 │   └── preview.png        # Screenshot used in the README
 │
 ├── public/
