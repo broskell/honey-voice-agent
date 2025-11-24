@@ -1,6 +1,6 @@
 # Honey – AI Voice Study Buddy (Browser Voice + LLM)
 
-![Honey App Screenshot](/Assets/preview.png)
+![Honey App Screenshot](/Assets/honey_logo.png)
 
 Honey is a small web app that acts as a voice‑first AI "study buddy" for students.
 
