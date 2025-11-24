@@ -21,25 +21,34 @@ body {
   color: var(--white);
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 15px;
 }
 
 .app {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1100px;
   background: var(--dark-grey);
-  border-radius: 20px;
+  border-radius: 16px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
   overflow: hidden;
   border: 1px solid var(--mid-grey);
+  margin-bottom: 10px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--silver);
+  padding: 8px 0;
 }
 
 /* Header */
 .header {
   background: linear-gradient(135deg, var(--mid-grey) 0%, var(--dark-grey) 100%);
-  padding: 30px 40px;
+  padding: 20px 30px;
   border-bottom: 1px solid var(--light-grey);
   display: flex;
   justify-content: space-between;
@@ -48,14 +57,14 @@ body {
 }
 
 .header-left h1 {
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: -0.5px;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
 .subtitle {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--silver);
   font-weight: 400;
 }
@@ -102,17 +111,17 @@ main {
 /* Chat Section */
 .chat-section {
   background: var(--dark-grey);
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .chat {
   background: var(--black);
   border-radius: 12px;
-  padding: 20px;
-  height: 450px;
+  padding: 16px;
+  height: 360px;
   overflow-y: auto;
   border: 1px solid var(--mid-grey);
 }
@@ -152,6 +161,7 @@ main {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -239,24 +249,24 @@ button:active {
 /* Side Panel */
 .side-panel {
   background: var(--black);
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .panel-block {
   background: var(--dark-grey);
   border-radius: 12px;
-  padding: 20px;
+  padding: 16px;
   border: 1px solid var(--mid-grey);
 }
 
 .panel-block h2 {
-  font-size: 13px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: var(--light-silver);
   font-weight: 600;
 }
@@ -264,8 +274,8 @@ button:active {
 /* Tasks */
 #task-list {
   list-style: none;
-  margin-bottom: 12px;
-  max-height: 140px;
+  margin-bottom: 10px;
+  max-height: 110px;
   overflow-y: auto;
 }
 
@@ -326,9 +336,9 @@ button:active {
 
 /* Timer */
 .timer-display {
-  font-size: 48px;
+  font-size: 40px;
   text-align: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-weight: 300;
   letter-spacing: 4px;
   font-family: 'Courier New', monospace;
@@ -348,16 +358,16 @@ button:active {
 /* Study Plan */
 #plan-output {
   width: 100%;
-  min-height: 120px;
-  padding: 12px 16px;
+  min-height: 100px;
+  padding: 10px 14px;
   border-radius: 8px;
   border: 1px solid var(--light-grey);
   background: var(--mid-grey);
   color: var(--white);
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.6;
   resize: vertical;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   font-family: inherit;
 }
 
