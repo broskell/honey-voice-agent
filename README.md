@@ -96,8 +96,8 @@ Express serves static files from `public/` and explicitly sends `public/index.ht
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/broskell/honey-voice-buddy.git
-cd honey-voice-buddy
+git clone https://github.com/broskell/honey-voice-agent.git
+cd honey-voice-agent
 ```
 
 ### 2. Install dependencies
